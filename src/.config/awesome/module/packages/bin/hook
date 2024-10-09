@@ -1,5 +1,0 @@
-#!/usr/bin/env bash
-
-if pgrep -f awesome > /dev/null; then
-    echo "awesome.emit_signal('signal::packages_upgrade')" | awesome-client
-fi

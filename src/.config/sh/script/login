@@ -1,7 +1,4 @@
 #
-# Launch awesome on /dev/tty1 login
+# Login script
 #
 
-if [[ $(tty) = "/dev/tty1" ]]; then
-    pgrep awesome || startx "$XDG_CONFIG_HOME"/X11/xinitrc
-fi
