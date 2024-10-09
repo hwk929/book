@@ -1,0 +1,16 @@
+import = ["/home/hwk/.config/alacritty/dracula.toml"]
+
+[env]
+TERM = "xterm-256color"
+
+[font]
+normal = { family = "UbuntuMono Nerd Font", style = "Regular" }
+
+[window]
+padding.x = 15
+padding.y = 15
+
+[cursor]
+style.shape = "Block"
+style.blinking = "On"
+blink_interval = 600

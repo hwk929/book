@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+
+# Mute toggle
+#  Toggle mute for use with Discord
+
+pactl set-source-mute @DEFAULT_SOURCE@ toggle
+notify-send -t 999999 -u critical "Mute Toggle" "$(pactl get-source-mute @DEFAULT_SOURCE@)"
+

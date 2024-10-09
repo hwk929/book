@@ -1,0 +1,40 @@
+#
+# Cleanup $HOME
+# https://wiki.archlinux.org/title/XDG_Base_Directory
+#
+
+# Java
+export _JAVA_OPTIONS=-Djava.util.prefs.userRoot="$XDG_CONFIG_HOME"/java
+
+# /dev
+export GOPATH="$HOME"/dev/go
+export GOMODCACHE="$HOME"/dev/go/mod
+
+# /.config
+export XINITRC="$XDG_CONFIG_HOME"/X11/xinitrc
+export XSERVERRC="$XDG_CONFIG_HOME"/X11/xserverrc
+export DOCKER_CONFIG="$XDG_CONFIG_HOME"/docker
+export NPM_CONFIG_USERCONFIG="$XDG_CONFIG_HOME"/npm/config
+export WGETRC="$XDG_CACHE_HOME"/wgetrc
+export GNUPGHOME="$XDG_DATA_HOME"/gnupg
+export NUGET_PACKAGES="$XDG_CACHE_HOME"/NuGetPackages
+export KUBECONFIG="$XDG_CONFIG_HOME"/kube
+export CARGO_HOME="$XDG_DATA_HOME"/cargo
+
+# /.cache
+export NPM_CONFIG_CACHE="$XDG_CACHE_HOME"/npm
+export KUBECACHEDIR="$XDG_CACHE_HOME"/kube
+
+# /tmp
+export NPM_CONFIG_TMP=/tmp/npm
+
+# /.local/share
+export MINIKUBE_HOME="$XDG_DATA_HOME"/minikube 
+export PASSWORD_STORE_DIR="$XDG_DATA_HOME"/pass 
+
+# /.local/state
+export W3M_DIR="$XDG_STATE_HOME"/w3m
+
+# Alias cleanup
+alias wget="wget --hsts-file='$XDG_CACHE_HOME/wget-hsts'"
+alias gpg2="gpg2 --homedir "$XDG_DATA_HOME"/gnupg"

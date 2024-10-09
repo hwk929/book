@@ -1,0 +1,13 @@
+#
+# Application specific functions
+#
+
+# pnpm start
+export PNPM_HOME="$XDG_DATA_HOME"
+
+case ":$PATH:" in
+    *":$PNPM_HOME:"*) ;;
+    *) export PATH="$PNPM_HOME:$PATH" ;;
+esac
+# pnpm end
+

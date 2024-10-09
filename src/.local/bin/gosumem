@@ -1,0 +1,16 @@
+#!/usr/bin/env bash
+
+# Start/stop gosumemory
+#  $SONGS needs to point to the songs directory.
+
+SONGS="$XDG_DATA_HOME/osu-wine/osu!/Songs"
+CHOICE=$(printf "Start\nStop" | rofi -dmenu -p "Start/stop gosumemory") 
+
+[[ "$CHOICE" == "Stop" ]] && {
+    pkexec killall gosumemory && notify-send "gosumemory killed!"
+    exit 0
+}
+
+notify-send "Starting gosumemory..."
+pkexec gosumemory -cgodisable -wine -path "$SONGS"
+

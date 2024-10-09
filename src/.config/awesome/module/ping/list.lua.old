@@ -1,0 +1,9 @@
+return {
+    list = {
+        { name = "pi.hole", host = "pi.hole" },
+        { name = "example.com", host = "example.com" },
+    },
+
+    freq = 240,
+    amt = 1
+}

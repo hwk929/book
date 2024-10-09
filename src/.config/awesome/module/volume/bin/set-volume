@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+
+pactl set-sink-volume 0 "$1%"
+
+if [[ "$2" == "true" ]]; then
+    echo "awesome.emit_signal('signal::volume_update')" | awesome-client
+fi

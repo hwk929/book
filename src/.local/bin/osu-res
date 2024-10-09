@@ -1,0 +1,40 @@
+#!/usr/bin/env bash
+
+# osu! resolution switcher
+#  $XDG_DATA_HOME/osuconfig/resolutions needs to exist
+
+RES="$XDG_DATA_HOME"/osuconfig/resolutions
+OSU_CFG="$XDG_DATA_HOME/osu-wine/osu!/osu!.hwk.cfg"
+OSU_BIN="osu-server"
+
+# Util functions
+set_xy() {
+    sed -i -e "s/^Width = .*/Width = $1/" "$OSU_CFG"
+    sed -i -e "s/^Height = .*/Height = $2/" "$OSU_CFG"
+}
+
+# Check for config file
+if [[ ! -f "$RES" ]]; then
+    notify-send "'$RES' does not exist!"
+    exit 1
+fi
+
+# Read choice
+choice=$(rofi -dmenu -p "Select a resolution (esc for 800x600)" < "$RES")
+
+if [[ -z "$choice" ]]; then
+    set_xy 800 600
+
+    # Launch the game
+    echo "No resolution picked"
+    "$OSU_BIN"
+
+    exit 0
+fi
+
+# Set the resolution
+set_xy "${choice%x*}" "${choice#*x}"
+
+# Launch the game
+"$OSU_BIN"
+

@@ -1,0 +1,11 @@
+#
+# Default shell profile
+#
+
+export SHELL_DIRECTORY_CONFIG="$HOME"/.config/sh
+export PATH=$PATH:"$HOME"/.local/bin
+
+. "$SHELL_DIRECTORY_CONFIG"/source/alias
+. "$SHELL_DIRECTORY_CONFIG"/source/app
+. "$SHELL_DIRECTORY_CONFIG"/source/tidy
+. "$SHELL_DIRECTORY_CONFIG"/source/xdg

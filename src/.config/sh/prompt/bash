@@ -1,0 +1,21 @@
+#!/usr/bin/env bash
+
+# Set colors
+__PROMPT_RED="\[\e[0;31m\]"
+__PROMPT_GREEN="\[\e[0;32m\]"
+__PROMPT_YELLOW="\[\e[0;33m\]"
+__PROMPT_BLUE="\[\e[0;34m\]"
+__PROMPT_CYAN="\[\e[0;36m\]"
+
+__PROMPT_DIR="\w"
+__PROMPT_RESET="\[\e[0;39m\]"
+
+# Set prompt
+source "$HOME"/.config/sh/prompt/_ps
+
+__prompt_exec() {
+    __prompt_command
+    PS1="$__PROMPT"
+}
+
+[ "$BASH_VERSION" ] && PROMPT_COMMAND=__prompt_exec

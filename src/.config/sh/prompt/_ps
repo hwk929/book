@@ -1,0 +1,63 @@
+#
+# Simple prompt for bash & zsh
+#
+
+# Features:
+#  - Directory location (shorten with ~).
+#  - Display owner of directory.
+#  - Show shell if current shell isn't default.
+#  - Exit status of the last command.
+
+__DEFAULT_USER_SHELL=$(awk -F: -v user="$USER" '$1 == user {print $NF}' /etc/passwd)
+__CURRENT_USER_SHELL=$(ps -p $$ -o 'comm=')
+__DEFAULT_SHELL=$(basename "$__DEFAULT_USER_SHELL")
+__CURRENT_SHELL=$(basename "$__CURRENT_USER_SHELL")
+
+__own_shell() {
+    local res=""
+
+    if [[ "$__DEFAULT_SHELL" != "$__CURRENT_SHELL" ]]; then
+        res="${__PROMPT_CYAN}${__CURRENT_SHELL} "
+    fi
+
+    __PROMPT+="${res}${__PROMPT_RESET}"
+}
+
+__workdir() {
+    __PROMPT+="${__PROMPT_BLUE}${__PROMPT_DIR}${__PROMPT_RESET} "
+}
+
+__permissions() {
+    local rperms=""
+    local res=""
+
+    rperms=$(stat --printf "%U" "$PWD")
+
+    if [[ "$USER" != "$rperms" ]]; then
+        res="own ${__PROMPT_YELLOW}${rperms} "
+    fi
+
+    __PROMPT+="${res}${__PROMPT_RESET}"
+}
+
+__exitstatus() {
+    local res=""
+
+    if [[ "$1" != 0 ]]
+        then res=$__PROMPT_RED
+        else res=$__PROMPT_GREEN
+    fi
+
+    __PROMPT+="${res}>${__PROMPT_RESET} "
+}
+
+__prompt_command() {
+    local EXIT="$?"
+
+    __PROMPT="${__PROMPT_RESET}"
+
+    __own_shell
+    __workdir
+    __permissions
+    __exitstatus $EXIT
+}

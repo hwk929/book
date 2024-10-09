@@ -1,0 +1,19 @@
+#!/usr/bin/env zsh
+
+# Set colors
+__PROMPT_RED="%F{red}"
+__PROMPT_GREEN="%F{green}"
+__PROMPT_YELLOW="%F{yellow}"
+__PROMPT_BLUE="%F{blue}"
+__PROMPT_CYAN="%F{cyan}"
+
+__PROMPT_DIR="%~"
+__PROMPT_RESET="%F{reset_color}"
+
+# Set prompt
+source "$HOME"/.config/sh/prompt/_ps
+
+[ "$ZSH_VERSION" ] && precmd() {
+    __prompt_command
+    PROMPT="$__PROMPT"
+}

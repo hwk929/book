@@ -1,0 +1,18 @@
+#!/usr/bin/env bash
+
+run() {
+    if ! pgrep -f "$1"; then
+        "$@" &
+    fi
+}
+
+# Applications
+run "picom"
+run "lxsession"
+run "vesktop"
+run "copyq"
+run "newtab"
+
+# Screen config
+run "$HOME/.config/screenlayout/display"
+run "$HOME/.local/bin/disable-copy"

@@ -1,0 +1,7 @@
+#
+# Print system information on welcome
+#
+
+if [[ "$TERM" == "xterm-256color" ]]; then
+    pfetch
+fi
