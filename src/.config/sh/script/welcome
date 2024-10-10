@@ -1,7 +1,10 @@
 #
-# Print system information on welcome
+# Set $TERM if `fbterm` is running
 #
 
-if [[ "$TERM" == "xterm-256color" ]]; then
-    pfetch
-fi
+[[ "$TERM" == "linux" ]] && pgrep -f "fbterm" > /dev/null && {
+    export TERM="fbterm-256color" # Fix colors
+    echo -en "\e]P7ffffff" # Fix white
+    tmux new -s hwk
+}
+

@@ -2,6 +2,8 @@
 
 ![code-size](https://img.shields.io/github/languages/code-size/hwk929/book) ![last-commit](https://img.shields.io/github/last-commit/hwk929/book)
 
+My personal dotfiles.
+
 ## Usage
 
 Requires GNU [stow](https://www.gnu.org/software/stow).

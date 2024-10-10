@@ -1,4 +1,6 @@
 #
-# Login script
+# Launch `fbterm` on /dev/tty1 login
 #
+
+[[ $(tty) = "/dev/tty1" ]] && fbterm
 
