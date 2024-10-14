@@ -3,4 +3,5 @@
 #
 
 [[ $(tty) = "/dev/tty1" ]] && fbterm
+[[ $(tty) = "/dev/tty2" ]] && sx xswm
 

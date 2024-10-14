@@ -1,0 +1,15 @@
+super + Return
+    alacritty
+
+super + backslash
+    qutebrowser
+
+super + Tab
+    xswm last
+
+super + shift + c
+    xswm close
+
+super + shift + q
+    xswm quit
+
